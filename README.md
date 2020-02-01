@@ -33,7 +33,7 @@ Vue.use(AutoFetch)
 
 **[Local Component Registration](https://vuejs.org/v2/guide/components-registration.html#Local-Registration)**
 ```js
-import { AutoFetch } from 'vue-autofetch'
+import AutoFetch from 'vue-autofetch'
 
 export default {
   components: {
