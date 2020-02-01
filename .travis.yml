@@ -1,0 +1,27 @@
+language: node_js
+node_js:
+- '8'
+- '10'
+- '12'
+
+install:
+- yarn install
+
+script:
+- yarn lint
+- yarn build
+
+notifications:
+  email: false
+
+deploy:
+  skip_cleanup: true
+  provider: npm
+  email: Taras.Fomin@gmail.com
+  api_key:
+    secure: qUTyXLR8Oe/hwwWuHFVYjCunzxOQYQnk4nbP0Tv2PdolOgBL5/D1HNffevPtcg9KkNP5F5mHQauCQ1YsejopffPR/hxvKtUh8/GepGU2uVnBmcXw0SdGu+qb/fvSrIr+4+NfSjMZdjrRa6l33s58n1r6F6NsfYO5oedOKLQ+aRXaMX3xdlidgDaBmdD+y4hUhLe4SPVu0D5u0f0+dX/AgJtrfuXyJQ0NuLPXQLIpZEaWYna2Egi0JJZf86Kpu3NnXYqLKkc+a3V2/c3SktWJoOHCirey+sbiLwJQruXuQrp+vddNqT03m3PaxP2FQmDhDGH4bl1hsKg/gDezbyHagd9OyzR11QF9sduNBwun8DMK/P6wde5bU2xlhfQB9dHgekNoEjYl5DGwHCkRfYrqIX8Ko5cnfA5TN4sxPY8pO2YUPDAkL98RfhCg+jfOx+YPRkUpVO6cdrcwyuERpp0Z6l+GMsOD7VVQTJHut1CreMNC4zbFQ0MB+ZdqrmD8OJ40IVB6ZRZ5QtlM2moE850ERwgXRlbDbvmx9uevswOpVAi2b8PoSFsjFHYA5GQ9yyLqNASh8VQO1ox1t6bzPCWKQEY+AxPD3mc8Tw/FPn5vjlkJ5fm9Gs+nr0YC47dSkru4sQkrpBhGbqbVwAWY+pxzBos7wYEoXlUXGyxdXDYHutg=
+  on:
+    tags: true
+    repo: Tarik02/vue-autofetch
+    master: branch
+    condition: "$TRAVIS_NODE_VERSION = 12"

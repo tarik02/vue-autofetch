@@ -1,0 +1,44 @@
+{
+  "name": "vue-autofetch",
+  "version": "1.0.0",
+  "description": "Better and Vue-style data fetching",
+  "author": "tarik02",
+  "scripts": {
+    "build": "vue-cli-service build --dest lib --target lib ./src/index.ts",
+    "lint": "vue-cli-service lint"
+  },
+  "main": "lib/vue-autofetch.common.js",
+  "typings": "src/index.ts",
+  "dependencies": {},
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^4.1.0",
+    "@vue/cli-plugin-eslint": "^4.1.0",
+    "@vue/cli-plugin-typescript": "^4.1.2",
+    "@vue/cli-service": "^4.1.0",
+    "@vue/eslint-config-standard": "^4.0.0",
+    "@vue/eslint-config-typescript": "^4.0.0",
+    "babel-eslint": "^10.0.3",
+    "eslint": "^5.16.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "typescript": "~3.5.3",
+    "vue": "^2.6.11",
+    "vue-template-compiler": "^2.6.10"
+  },
+  "peerDependencies": {
+    "vue": "^2.6.11"
+  },
+  "bugs": {
+    "url": "https://github.com/Tarik02/vue-autofetch/issues"
+  },
+  "homepage": "https://github.com/Tarik02/vue-autofetch#readme",
+  "keywords": [
+    "vue",
+    "loading",
+    "fetch"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tarik02/vue-autofetch.git"
+  }
+}
