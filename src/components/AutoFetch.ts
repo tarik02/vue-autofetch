@@ -24,7 +24,7 @@ export default Vue.extend({
 
     threshold: {
       type: Function,
-      default: (fn: any) => fn()
+      default: (fn: Function) => () => fn()
     }
   },
 
