@@ -35,6 +35,17 @@ export default Vue.extend({
   computed: {
     _doRequest () {
       return this.threshold(() => this._doRequestReal())
+    },
+
+    _refreshFn () {
+      return () => this.refresh()
+    },
+
+    _slotArgs () {
+      return {
+        ...this.value,
+        refresh: (this as any)._refreshFn
+      }
     }
   },
 
@@ -148,7 +159,7 @@ export default Vue.extend({
     const slot = this.$scopedSlots[this.value.state] || this.$scopedSlots['default']
 
     if (slot) {
-      return slot(this.value)
+      return slot((this as any)._slotArgs)
     }
 
     return null as any
