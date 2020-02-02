@@ -71,7 +71,7 @@ The component can be used in several ways:
 <!-- as a renderless component -->
 <template>
   <div>
-    <auto-fetch v-model="items" :data="request" />
+    <auto-fetch ref="items" v-model="items" :data="request" />
 
     <input v-model="page" />
 
@@ -82,7 +82,10 @@ The component can be used in several ways:
       Success: {{ items.result }}
     </template>
     <template v-else-if="items.state === 'failure'">
-      Error: {{ items.error }}
+      <div>
+        Error: {{ items.error }}
+        <button @click="$refs.items.refresh()">Refresh</button>
+      </div>
     </template>
   </div>
 </template>
@@ -99,7 +102,10 @@ The component can be used in several ways:
       Success: {{ result }}
     </template>
     <template v-else-if="state === 'failure'">
-      Error: {{ error }}
+      <div>
+        Error: {{ error }}
+        <button @click="refresh">Refresh</button>
+      </div>
     </template>
   </auto-fetch>
 </template>
@@ -119,8 +125,11 @@ The component can be used in several ways:
         Success: {{ result }}
       </template>
 
-      <template v-slot:failure="{ error }">
-        Error: {{ error }}
+      <template v-slot:failure="{ error, refresh }">
+        <div>
+          Error: {{ error }}
+        </div>
+        <button @click="refresh">Refresh</button>
       </template>
     </auto-fetch>
   </div>
