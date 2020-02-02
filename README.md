@@ -51,7 +51,16 @@ Props:
 - `clear` [default: `false`] - if true, then set response and error to null if new request has started.
 - `data` [required] - request data, passed to handler. If changes, then component automatically downloads new data.
 - `handler` [default: `fetch`] - function which is called in order to do request. Should return a promise. If resolved, then state is changed to `success` and result is passed to `result` variable. If rejected, then state is changed to `failure` and error is passed to `error` variable.
-- `threshold` [default: `fn => fn()`] - function that controls frequency of requests (for example debounce or throttle from lodash).
+- `threshold` [default: `fn => () => fn()`] - function that controls frequency of requests (for example debounce or throttle from lodash). It receives a function [1] which should return a function which calls function [1].
+
+Methods:
+- `refresh` - reload request.
+
+Events:
+- `success` - called when received a successful response. Arguments: `response`.
+- `failure` - called when request failed. Arguments: `error`.
+- `start` - called when request has started (`state` set to `'loading'`). Arguments: empty.
+- `done` - called when request is resolved or errored. Arguments: `success` (`true` or `false`).
 
 
 ## Usage
