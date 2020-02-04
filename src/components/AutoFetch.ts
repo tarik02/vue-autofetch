@@ -42,10 +42,12 @@ export default Vue.extend({
     },
 
     _slotArgs () {
-      return {
+      const args = {
         ...this.value,
         refresh: (this as any)._refreshFn
-      }
+      } as any
+      args.handle = args
+      return args
     }
   },
 
