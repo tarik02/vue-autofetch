@@ -1,6 +1,6 @@
 import { STATUS_LOADING, STATUS_SUCCESS, STATUS_FAILURE } from './status'
 
-type RequestState<T> =
+type RequestHandle<T> =
   & { handle: RequestState<T>, refresh: () => void }
   & (
     | { state: STATUS_LOADING, response: T, error: null }
@@ -10,17 +10,23 @@ type RequestState<T> =
     | { state: STATUS_FAILURE, response: null, error: any }
   )
 
+/** @deprecated */
+type RequestState<T> = RequestHandle<T>
+
 const nop = () => {}
 
-export const createRequestState = <T>(): RequestState<T> => {
-  const state = {
+export const createRequestHandle = <T>(): RequestHandle<T> => {
+  const handle = {
     state: STATUS_LOADING,
     response: null,
     error: null,
     refresh: nop
   } as any
 
-  state.handle = state
+  handle.handle = handle
 
-  return state as RequestState<T>
+  return handle as RequestHandle<T>
 }
+
+/** @deprecated */
+export const createRequestState = createRequestHandle

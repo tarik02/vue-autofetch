@@ -1,13 +1,13 @@
 import Vue from 'vue'
 
 import { STATUS_LOADING, STATUS_SUCCESS, STATUS_FAILURE } from '../status'
-import { createRequestState } from '../utils'
+import { createRequestHandle } from '../utils'
 
 export default Vue.extend({
   props: {
     value: {
       type: Object,
-      default: createRequestState
+      default: createRequestHandle
     },
 
     clear: {
