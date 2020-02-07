@@ -136,7 +136,7 @@ The component can be used in several ways:
 </template>
 
 <script>
-import AutoFetch, { createRequestState } from 'vue-autofetch'
+import AutoFetch, { createRequestHandle } from 'vue-autofetch'
 
 export default {
   components: {
@@ -146,7 +146,7 @@ export default {
   data: () => ({
     page: 1,
 
-    items: createRequestState()
+    items: createRequestHandle()
   }),
 
   computed: {
