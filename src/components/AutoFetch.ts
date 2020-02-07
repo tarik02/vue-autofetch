@@ -39,15 +39,6 @@ export default Vue.extend({
 
     _refreshFn () {
       return () => this.refresh()
-    },
-
-    _slotArgs () {
-      const args = {
-        ...this.value,
-        refresh: (this as any)._refreshFn
-      } as any
-      args.handle = args
-      return args
     }
   },
 
@@ -149,6 +140,16 @@ export default Vue.extend({
   },
 
   watch: {
+    value: {
+      immediate: true,
+      handler (value) {
+        if (value) {
+          value.refresh = (this as any)._refreshFn
+          value.handle = value
+        }
+      }
+    },
+
     data: {
       deep: true,
       handler () {
@@ -161,7 +162,7 @@ export default Vue.extend({
     const slot = this.$scopedSlots[this.value.state] || this.$scopedSlots['default']
 
     if (slot) {
-      return slot((this as any)._slotArgs)
+      return slot(this.value)
     }
 
     return null as any
