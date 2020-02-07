@@ -1,6 +1,6 @@
 {
   "name": "vue-autofetch",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Better and Vue-style data fetching",
   "author": "tarik02",
   "scripts": {
