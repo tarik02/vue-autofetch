@@ -1,8 +1,11 @@
-export const STATUS_LOADING = 'loading'
-export type STATUS_LOADING = typeof STATUS_LOADING
+export const STATE_IDLE = 'idle'
+export type STATE_IDLE = typeof STATE_IDLE
 
-export const STATUS_SUCCESS = 'success'
-export type STATUS_SUCCESS = typeof STATUS_SUCCESS
+export const STATE_LOADING = 'loading'
+export type STATE_LOADING = typeof STATE_LOADING
 
-export const STATUS_FAILURE = 'failure'
-export type STATUS_FAILURE = typeof STATUS_FAILURE
+export const STATE_SUCCESS = 'success'
+export type STATE_SUCCESS = typeof STATE_SUCCESS
+
+export const STATE_FAILURE = 'failure'
+export type STATE_FAILURE = typeof STATE_FAILURE

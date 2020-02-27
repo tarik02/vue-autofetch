@@ -1,6 +1,6 @@
 import Vue from 'vue'
 
-import { STATUS_LOADING, STATUS_SUCCESS, STATUS_FAILURE } from '../status'
+import { STATE_IDLE, STATE_LOADING, STATE_SUCCESS, STATE_FAILURE } from '../status'
 import { createRequestHandle } from '../utils'
 
 export default Vue.extend({
@@ -46,12 +46,12 @@ export default Vue.extend({
     refresh () {
       if (!this.data) {
         this._clear(true)
-        this.value.state = STATUS_SUCCESS
+        this.value.state = STATE_IDLE
         return
       }
 
-      if (this.value.state !== STATUS_LOADING) {
-        this.value.state = STATUS_LOADING
+      if (this.value.state !== STATE_LOADING) {
+        this.value.state = STATE_LOADING
         this._clear()
         this._start()
       }
@@ -95,7 +95,7 @@ export default Vue.extend({
         }
 
         this.value.response = response
-        this.value.state = STATUS_SUCCESS
+        this.value.state = STATE_SUCCESS
         this.value.error = null
 
         this.$emit('success', response)
@@ -108,7 +108,7 @@ export default Vue.extend({
         }
 
         this.value.error = error
-        this.value.state = STATUS_FAILURE
+        this.value.state = STATE_FAILURE
         this.value.response = null
 
         this.$emit('failure', error)
@@ -173,7 +173,7 @@ export default Vue.extend({
   },
 
   beforeDestroy () {
-    if (this.value.state === STATUS_LOADING) {
+    if (this.value.state === STATE_LOADING) {
       this._done(false)
     }
   },
